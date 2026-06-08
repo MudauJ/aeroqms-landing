@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AeroQMS — Aviation Quality Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #0F2040;
+    --navy-light: #1A3560;
+    --blue: #1E6FD9;
+    --blue-light: #3B8EF0;
+    --blue-pale: #E8F1FC;
+    --amber: #F59E0B;
+    --amber-light: #FCD34D;
+    --white: #FFFFFF;
+    --off-white: #F7F9FC;
+    --text-muted: #8A9AB5;
+    --text-body: #3D5277;
+    --border: rgba(30, 111, 217, 0.15);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-logo-mark svg { width: 20px; height: 20px; fill: white; }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo-text span { color: var(--amber); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: white; }
+
+  .nav-cta {
+    background: var(--blue);
+    color: white !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    font-size: 14px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-light) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 5% 80px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,111,217,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,111,217,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(30,111,217,0.15) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+    bottom: 0; left: 20%;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 640px;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(30,111,217,0.15);
+    border: 1px solid rgba(30,111,217,0.3);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--blue-light);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    background: var(--blue-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+    font-family: var(--font-body);
+  }
+
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.35);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .hero-visual {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    max-width: 580px;
+    z-index: 2;
+  }
+
+  .dashboard-mockup {
+    background: #0F2040;
+    border-radius: 12px;
+    border: 1px solid rgba(30,111,217,0.25);
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+
+  .mockup-bar {
+    background: #0A1628;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .mockup-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .mockup-content {
+    padding: 20px;
+  }
+
+  .mockup-header {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .mockup-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .mockup-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .mockup-card-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 6px;
+  }
+
+  .mockup-card-num {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .mockup-alert {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.25);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 11px;
+    color: #FCA5A5;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mockup-alert-dot {
+    width: 6px; height: 6px;
+    background: #EF4444;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse 1.5s infinite;
+  }
+
+  .mockup-row {
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+  }
+
+  .mockup-row-label { color: rgba(255,255,255,0.6); }
+
+  .badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .badge-amber { background: rgba(245,158,11,0.15); color: #FCD34D; }
+  .badge-red { background: rgba(239,68,68,0.15); color: #FCA5A5; }
+  .badge-green { background: rgba(34,197,94,0.15); color: #86EFAC; }
+  .badge-blue { background: rgba(30,111,217,0.2); color: #93C5FD; }
+
+  /* LOGOS / SOCIAL PROOF */
+  .trust-bar {
+    background: var(--off-white);
+    padding: 28px 5%;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .trust-bar p {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .trust-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .trust-logo {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #C5D0E0;
+    letter-spacing: -0.3px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -0.8px;
+    margin-bottom: 20px;
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--text-body);
+    line-height: 1.7;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* FEATURES */
+  .features { background: var(--white); }
+
+  .features-intro {
+    max-width: 600px;
+    margin-bottom: 72px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .feature-card {
+    background: white;
+    padding: 40px 36px;
+    transition: background 0.2s;
+  }
+
+  .feature-card:hover { background: var(--off-white); }
+
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: var(--blue-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .feature-icon svg {
+    width: 24px; height: 24px;
+    stroke: var(--blue);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* COMPLIANCE */
+  .compliance {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .compliance-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,111,217,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,111,217,0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .compliance-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .compliance .section-title { color: white; }
+  .compliance .section-subtitle { color: rgba(255,255,255,0.55); max-width: 460px; }
+
+  .compliance-list {
+    list-style: none;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .compliance-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+
+  .compliance-check {
+    width: 22px; height: 22px;
+    background: rgba(30,111,217,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .compliance-check svg {
+    width: 12px; height: 12px;
+    stroke: var(--blue-light);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .compliance-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .compliance-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 24px 28px;
+    transition: border-color 0.2s;
+  }
+
+  .compliance-card:hover { border-color: rgba(30,111,217,0.35); }
+
+  .compliance-card-tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--blue-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .compliance-card-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  .compliance-card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ROLES */
+  .roles { background: var(--off-white); }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .role-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .role-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-3px);
+  }
+
+  .role-card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .accent-owner { background: var(--amber); }
+  .accent-postholder { background: var(--blue); }
+  .accent-pilot { background: #10B981; }
+
+  .role-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .role-icon svg {
+    width: 22px; height: 22px;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .icon-owner { background: rgba(245,158,11,0.1); }
+  .icon-owner svg { stroke: var(--amber); }
+  .icon-postholder { background: var(--blue-pale); }
+  .icon-postholder svg { stroke: var(--blue); }
+  .icon-pilot { background: rgba(16,185,129,0.1); }
+  .icon-pilot svg { stroke: #10B981; }
+
+  .role-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
+  }
+
+  .role-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .role-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .role-features li {
+    font-size: 13px;
+    color: var(--text-body);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 300;
+  }
+
+  .role-features li::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--blue-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* PRICING */
+  .pricing { background: white; }
+
+  .pricing-intro {
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 64px;
+  }
+
+  .pricing-intro .section-title { margin: 0 auto 16px; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    position: relative;
+    background: white;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .pricing-card:hover { transform: translateY(-3px); }
+
+  .pricing-card.featured {
+    border-color: var(--blue);
+    background: var(--navy);
+    transform: scale(1.02);
+  }
+
+  .pricing-card.featured:hover { transform: scale(1.02) translateY(-3px); }
+
+  .pricing-popular {
+    position: absolute;
+    top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .pricing-tier {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .pricing-card.featured .pricing-tier { color: rgba(255,255,255,0.5); }
+
+  .pricing-price {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-card.featured .pricing-price { color: white; }
+
+  .pricing-period {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .pricing-card.featured .pricing-period { color: rgba(255,255,255,0.4); }
+
+  .pricing-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 24px;
+  }
+
+  .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.1); }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .pricing-features li {
+    font-size: 14px;
+    color: var(--text-body);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+  }
+
+  .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.7); }
+
+  .pricing-check {
+    width: 18px; height: 18px;
+    background: rgba(30,111,217,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pricing-card.featured .pricing-check { background: rgba(30,111,217,0.25); }
+
+  .pricing-check svg {
+    width: 10px; height: 10px;
+    stroke: var(--blue);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .pricing-card.featured .pricing-check svg { stroke: var(--blue-light); }
+
+  .btn-pricing {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-body);
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .btn-pricing-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--navy);
+  }
+
+  .btn-pricing-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  .btn-pricing-solid {
+    background: var(--blue);
+    color: white;
+  }
+
+  .btn-pricing-solid:hover { background: var(--blue-light); }
+
+  /* CTA */
+  .cta-section {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section .hero-grid { opacity: 0.5; }
+
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-section .section-title { color: white; }
+
+  .cta-section .section-subtitle {
+    color: rgba(255,255,255,0.55);
+    margin: 0 auto 40px;
+    max-width: 460px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #060E1A;
+    padding: 60px 5% 40px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    margin-top: 16px;
+    font-weight: 300;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 300;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-bottom-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-visual { display: none; }
+    .compliance-inner { grid-template-columns: 1fr; gap: 40px; }
+    .roles-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .pricing-card.featured { transform: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">Aero<span>QMS</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#roles">Who It's For</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#demo" class="nav-cta">Request Demo</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Built for SACAA-regulated UAS operators
+    </div>
+
+    <h1>Aviation Quality &amp; Safety <em>Management</em>, Digitised</h1>
+
+    <p>AeroQMS gives South African drone operators a single platform to manage their entire SMS and QMS — from occurrence reporting to corrective actions, fully aligned with CAR 101 and SA-CATS Part 101.</p>
+
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary">
+        Request a Demo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#features" class="btn-secondary">See Features</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">CAR 101</span>
+        <span class="hero-stat-label">Fully aligned</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">3 Roles</span>
+        <span class="hero-stat-label">Owner · Post Holder · Pilot</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">24hr</span>
+        <span class="hero-stat-label">SACAA notification alerts</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="dashboard-mockup">
+      <div class="mockup-bar">
+        <div class="mockup-dot" style="background:#EF4444"></div>
+        <div class="mockup-dot" style="background:#F59E0B"></div>
+        <div class="mockup-dot" style="background:#10B981"></div>
+      </div>
+      <div class="mockup-content">
+        <div class="mockup-header">Dashboard — RocketDNA ZA</div>
+        <div class="mockup-cards">
+          <div class="mockup-card">
+            <div class="mockup-card-label">Open Occurrences</div>
+            <div class="mockup-card-num" style="color:#F59E0B">3</div>
+          </div>
+          <div class="mockup-card">
+            <div class="mockup-card-label">Open CARs</div>
+            <div class="mockup-card-num" style="color:#EF4444">4</div>
+          </div>
+          <div class="mockup-card">
+            <div class="mockup-card-label">Pending Audits</div>
+            <div class="mockup-card-num" style="color:#3B8EF0">1</div>
+          </div>
+        </div>
+        <div class="mockup-alert">
+          <div class="mockup-alert-dot"></div>
+          SACAA notification due — ZT-MAN accident — 11h 43m remaining
+        </div>
+        <div class="mockup-row">
+          <span class="mockup-row-label">ORF-2026-0012 · Near Miss · ZT-MAN</span>
+          <span class="badge badge-amber">Open</span>
+        </div>
+        <div class="mockup-row">
+          <span class="mockup-row-label">CAR-2025-SACAA-003 · Incidents not investigated</span>
+          <span class="badge badge-red">Overdue</span>
+        </div>
+        <div class="mockup-row">
+          <span class="mockup-row-label">RAF-2026-0008 · Sibusiso Khanyi · Sun City</span>
+          <span class="badge badge-green">Approved</span>
+        </div>
+        <div class="mockup-row">
+          <span class="mockup-row-label">AUD-2026-0003 · Flight Operations · Q2</span>
+          <span class="badge badge-blue">Scheduled</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <p>Aligned with South African aviation regulations</p>
+  <div class="trust-logos">
+    <span class="trust-logo">SACAA CAR 101</span>
+    <span class="trust-logo">SA-CATS Part 101</span>
+    <span class="trust-logo">ICAO Annex 13</span>
+    <span class="trust-logo">ICAO Doc 9859</span>
+    <span class="trust-logo">SMS Framework</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-intro">
+    <span class="section-label">Platform Features</span>
+    <h2 class="section-title">Everything your QMS and SMS requires, in one place</h2>
+    <p class="section-subtitle">Built from the ground up for SACAA-regulated UAS operators. Every module maps directly to your Operations Manual requirements.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="feature-title">Occurrence Reporting</div>
+      <div class="feature-desc">SACAA-aligned occurrence report forms with 24-hour accident notification countdowns, automatic reference numbers, and Safety Manager completion workflow.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="feature-title">ICAO Investigation Workflow</div>
+      <div class="feature-desc">Six-phase investigation process — Notification, Evidence, Analysis, Findings, Recommendations, Final Report. Attach photos and manufacturer technical reports as evidence.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="feature-title">Risk Assessments</div>
+      <div class="feature-desc">Multi-hazard risk assessments with pre and post-mitigation ratings. Automated 90-day expiry tracking. Pilot submissions routed to Safety Manager for approval.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="feature-title">Corrective Actions (CAR)</div>
+      <div class="feature-desc">Three-section CAR workflow — Quality Manager raises, auditee responds, QM verifies and closes. Level 1/2/3 and Observation classifications with automatic compliance dates.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </div>
+      <div class="feature-title">Internal Audits</div>
+      <div class="feature-desc">Plan, schedule and conduct quarterly internal audits across all audit areas. Run compliance checklists and generate audit reports. Track findings and link directly to CARs.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="feature-title">Fleet &amp; Pilot Registry</div>
+      <div class="feature-desc">Manage your UAS fleet with LoA expiry tracking. Monitor pilot RPC licence and medical certificate expiry dates. Automatic warnings at 60-day threshold.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="feature-title">Trends &amp; SPIs</div>
+      <div class="feature-desc">Safety Performance Indicators dashboard with monthly occurrence trends, hazard category analysis, CAR closure rates and RA compliance metrics. Annual trend analysis built in.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </div>
+      <div class="feature-title">PDF Export</div>
+      <div class="feature-desc">Export any record to a print-ready PDF matching official SACAA form layouts — ORF, HRF, CAR, RAF and Investigation Reports. UNCONTROLLED WHEN PRINTED watermark included.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 000 6h20a3 3 0 000-6z"/><path d="M17 11l-5-8-5 8"/></svg>
+      </div>
+      <div class="feature-title">Hazard Reporting</div>
+      <div class="feature-desc">Confidential hazard report submissions with proactive, reactive and predictive identification. Safety Library logging with Safety Manager sign-off workflow.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance" id="compliance">
+  <div class="compliance-grid"></div>
+  <div class="compliance-inner">
+    <div>
+      <span class="section-label">SACAA Compliance</span>
+      <h2 class="section-title">Built around your Operations Manual requirements</h2>
+      <p class="section-subtitle">Every module in AeroQMS is designed to satisfy specific SACAA requirements. When auditors visit, your records are ready.</p>
+      <ul class="compliance-list">
+        <li>
+          <div class="compliance-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Occurrence reporting and investigation processes per CAR 101.05.6
+        </li>
+        <li>
+          <div class="compliance-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Risk assessment matrix aligned with ICAO Doc 9859 SMS framework
+        </li>
+        <li>
+          <div class="compliance-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Corrective Action classification per SA-CATS Part 101 audit requirements
+        </li>
+        <li>
+          <div class="compliance-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Quarterly internal audit schedule and compliance checklists
+        </li>
+        <li>
+          <div class="compliance-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          24-hour SACAA accident notification tracking and alerts
+        </li>
+        <li>
+          <div class="compliance-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          ICAO Annex 13 compliant investigation workflow with six phases
+        </li>
+      </ul>
+    </div>
+    <div class="compliance-cards">
+      <div class="compliance-card">
+        <span class="compliance-card-tag">SMS</span>
+        <div class="compliance-card-title">Safety Management System</div>
+        <div class="compliance-card-desc">Hazard identification, risk assessment, occurrence reporting, investigation and safety performance monitoring — all in one place.</div>
+      </div>
+      <div class="compliance-card">
+        <span class="compliance-card-tag">QMS</span>
+        <div class="compliance-card-title">Quality Management System</div>
+        <div class="compliance-card-desc">Internal audits, corrective actions, non-conformance tracking and continuous improvement processes aligned with your approved Operations Manual.</div>
+      </div>
+      <div class="compliance-card">
+        <span class="compliance-card-tag">Records</span>
+        <div class="compliance-card-title">Audit-Ready Record Keeping</div>
+        <div class="compliance-card-desc">Every record is timestamped, referenced and retrievable. When SACAA auditors visit, your evidence is one click away.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="roles" id="roles">
+  <span class="section-label">User Roles</span>
+  <h2 class="section-title">The right access for every person in your organisation</h2>
+  <p class="section-subtitle">Three purpose-built interfaces. Each role sees only what they need — nothing more.</p>
+
+  <div class="roles-grid">
+    <div class="role-card">
+      <div class="role-card-accent accent-owner"></div>
+      <div class="role-icon icon-owner">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="role-title">Owner</div>
+      <div class="role-subtitle">e.g. Quality / Safety Manager</div>
+      <ul class="role-features">
+        <li>Full platform access</li>
+        <li>Create and manage user accounts</li>
+        <li>View all SMS and QMS data</li>
+        <li>Raise and verify corrective actions</li>
+        <li>Run and sign off internal audits</li>
+        <li>Access Trends &amp; SPIs dashboard</li>
+        <li>Organisation settings management</li>
+      </ul>
+    </div>
+    <div class="role-card">
+      <div class="role-card-accent accent-postholder"></div>
+      <div class="role-icon icon-postholder">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="role-title">Post Holder</div>
+      <div class="role-subtitle">Accountable Manager, Safety Manager, Quality Manager, Responsible Person Aircraft/Flight Ops</div>
+      <ul class="role-features">
+        <li>Full operational access</li>
+        <li>View all occurrences and investigations</li>
+        <li>Approve or reject risk assessments</li>
+        <li>Respond to corrective actions</li>
+        <li>Access fleet and pilot records</li>
+        <li>View audit schedules and results</li>
+      </ul>
+    </div>
+    <div class="role-card">
+      <div class="role-card-accent accent-pilot"></div>
+      <div class="role-icon icon-pilot">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="role-title">Pilot</div>
+      <div class="role-subtitle">Remote Pilot</div>
+      <ul class="role-features">
+        <li>Submit occurrence reports</li>
+        <li>Submit hazard reports</li>
+        <li>Submit and track risk assessments</li>
+        <li>View own RPC and medical expiry</li>
+        <li>Receive approval notifications</li>
+        <li>Cannot see other pilots' data</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-intro">
+    <span class="section-label" style="display:block; text-align:center;">Pricing</span>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-subtitle" style="margin:0 auto; text-align:center;">No setup fees. Cancel anytime. All plans include full SACAA compliance features.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <span class="pricing-tier">Starter</span>
+      <div class="pricing-price">R1,500</div>
+      <span class="pricing-period">per month, billed monthly</span>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Up to 5 pilots</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Up to 3 aircraft</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>All SMS modules</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>PDF exports</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Email support</li>
+      </ul>
+      <a href="#demo" class="btn-pricing btn-pricing-outline">Get Started</a>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="pricing-popular">Most Popular</div>
+      <span class="pricing-tier">Professional</span>
+      <div class="pricing-price" style="color:white;">R3,500</div>
+      <span class="pricing-period">per month, billed monthly</span>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Up to 15 pilots</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Up to 10 aircraft</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Full SMS &amp; QMS</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Investigation module</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Trends &amp; SPIs</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Priority support</li>
+      </ul>
+      <a href="#demo" class="btn-pricing btn-pricing-solid">Get Started</a>
+    </div>
+
+    <div class="pricing-card">
+      <span class="pricing-tier">Enterprise</span>
+      <div class="pricing-price">R7,500</div>
+      <span class="pricing-period">per month, billed monthly</span>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Unlimited pilots</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Unlimited aircraft</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Custom branding</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Dedicated onboarding</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>SLA guarantee</li>
+        <li><div class="pricing-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Dedicated support</li>
+      </ul>
+      <a href="#demo" class="btn-pricing btn-pricing-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="demo">
+  <div class="hero-grid"></div>
+  <div class="cta-inner">
+    <span class="section-label" style="color: var(--blue-light);">Get Started</span>
+    <h2 class="section-title">Ready to make compliance effortless?</h2>
+    <p class="section-subtitle">See AeroQMS in action with a personalised demo. We'll walk you through the platform and show you how it maps to your Operations Manual.</p>
+    <div class="cta-actions">
+      <a href="mailto:info@aeroqums.co.za" class="btn-primary">
+        Request a Demo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:info@aeroqums.co.za" class="btn-secondary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none;">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">Aero<span>QMS</span></span>
+      </a>
+      <p>Aviation Quality Management System — built for SACAA-regulated UAS operators in South Africa.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#compliance">Compliance</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#demo">Request Demo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Modules</h4>
+      <ul>
+        <li><a href="#features">Occurrence Reports</a></li>
+        <li><a href="#features">Investigations</a></li>
+        <li><a href="#features">Risk Assessments</a></li>
+        <li><a href="#features">Corrective Actions</a></li>
+        <li><a href="#features">Internal Audits</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@aeroqums.co.za">info@aeroqums.co.za</a></li>
+        <li><a href="#demo">Book a Demo</a></li>
+        <li><a href="#demo">Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 AeroQMS. All rights reserved. Built for South African aviation.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
