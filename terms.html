@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — AeroQMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0C1824;
+  --navy:#1B3A5C;
+  --blue:#2563EB;
+  --blue-pale:#EFF6FF;
+  --gold:#C8960C;
+  --gold-light:#F5C518;
+  --teal:#0D9488;
+  --white:#FFFFFF;
+  --bg:#F8FAFD;
+  --card:#FFFFFF;
+  --border:#DBEAFE;
+  --border-subtle:#E8F0FE;
+  --text:#0C1824;
+  --text-body:#374151;
+  --text-muted:#6B7280;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(248,250,253,0.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-subtle);
+  padding:0 6%;display:flex;align-items:center;
+  justify-content:space-between;height:68px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(37,99,235,0.3)}
+.nav-wordmark{font-family:var(--font);font-size:19px;font-weight:800;color:var(--ink)}
+.nav-wordmark span{color:var(--gold)}
+.nav-back{font-size:14px;color:var(--text-muted);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+.nav-back:hover{color:var(--blue)}
+
+/* HERO */
+.hero{
+  background:linear-gradient(160deg,var(--ink) 0%,#0D1F35 45%,#0A2040 100%);
+  padding:130px 6% 70px;text-align:center;position:relative;overflow:hidden;
+}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:72px 72px}
+.hero-accent{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--blue),transparent)}
+.hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,150,12,0.12);border:1px solid rgba(200,150,12,0.28);border-radius:100px;padding:6px 16px;font-size:11px;color:#F5C518;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;font-family:var(--font)}
+.hero h1{font-family:var(--font);font-size:clamp(32px,4vw,48px);font-weight:800;color:white;letter-spacing:-1.2px;margin-bottom:16px;line-height:1.1}
+.hero p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;font-weight:300}
+.hero p strong{color:rgba(255,255,255,0.7);font-weight:500}
+
+/* CONTENT */
+.content-wrap{max-width:860px;margin:0 auto;padding:72px 6% 100px}
+
+/* TABLE OF CONTENTS */
+.toc{background:var(--blue-pale);border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:56px}
+.toc h3{font-family:var(--font);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
+.toc ol li a{font-size:13px;color:var(--blue);text-decoration:none;font-weight:500;transition:color 0.2s;display:flex;align-items:center;gap:6px}
+.toc ol li a:hover{color:var(--navy)}
+.toc ol li a::before{content:attr(data-num);font-size:10px;font-weight:700;color:var(--text-muted);min-width:18px}
+@media(max-width:600px){.toc ol{grid-template-columns:1fr}}
+
+/* IMPORTANT NOTICE */
+.notice{background:#FEF9E7;border:1px solid rgba(200,150,12,0.25);border-left:4px solid var(--gold);border-radius:10px;padding:20px 24px;margin-bottom:48px}
+.notice p{font-size:14px;color:var(--text-body);line-height:1.7}
+.notice strong{color:var(--ink);font-weight:700}
+
+/* SECTIONS */
+.tos-section{margin-bottom:52px;padding-bottom:52px;border-bottom:1px solid var(--border-subtle)}
+.tos-section:last-child{border-bottom:none}
+.tos-section h2{font-family:var(--font);font-size:22px;font-weight:800;color:var(--ink);margin-bottom:18px;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px}
+.section-num{font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-pale);border:1px solid var(--border);padding:3px 10px;border-radius:100px;font-family:var(--font)}
+.tos-section p{font-size:15px;color:var(--text-body);line-height:1.75;margin-bottom:14px}
+.tos-section p:last-child{margin-bottom:0}
+.tos-section ul,.tos-section ol{margin:14px 0 14px 20px;display:flex;flex-direction:column;gap:8px}
+.tos-section li{font-size:15px;color:var(--text-body);line-height:1.7}
+.highlight{background:#FEF9E7;border-left:3px solid var(--gold);padding:16px 20px;border-radius:0 8px 8px 0;margin:18px 0}
+.highlight p{font-size:14px;color:var(--text-body);margin-bottom:0}
+.highlight strong{color:var(--ink)}
+
+/* COMPANY INFO */
+.company-info{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;margin-top:20px}
+.company-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.company-row{display:flex;flex-direction:column;gap:3px;padding:10px 0;border-bottom:1px solid var(--border-subtle)}
+.company-row:last-child{border-bottom:none}
+.company-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.company-value{font-size:14px;color:var(--text);font-weight:500}
+@media(max-width:600px){.company-grid{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--ink);padding:40px 6%;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,0.3);margin-bottom:12px}
+.foot-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.foot-links a{font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+.foot-links a:hover{color:rgba(255,255,255,0.7)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-wordmark">Aero<span>QMS</span></span>
+  </a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Legal</div>
+    <h1>Terms of Service</h1>
+    <p>Last updated: <strong>20 August 2026</strong> &nbsp;·&nbsp; Effective date: <strong>20 August 2026</strong><br>These terms govern your access to and use of the AeroQMS platform and services.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1" data-num="1">Introduction and Acceptance</a></li>
+      <li><a href="#s2" data-num="2">Description of Services</a></li>
+      <li><a href="#s3" data-num="3">Eligibility and Registration</a></li>
+      <li><a href="#s4" data-num="4">Subscription and Payment</a></li>
+      <li><a href="#s5" data-num="5">User Responsibilities</a></li>
+      <li><a href="#s6" data-num="6">Data Ownership and Privacy</a></li>
+      <li><a href="#s7" data-num="7">Intellectual Property</a></li>
+      <li><a href="#s8" data-num="8">Regulatory Disclaimer</a></li>
+      <li><a href="#s9" data-num="9">Disclaimers and Warranties</a></li>
+      <li><a href="#s10" data-num="10">Limitation of Liability</a></li>
+      <li><a href="#s11" data-num="11">Indemnification</a></li>
+      <li><a href="#s12" data-num="12">Termination</a></li>
+      <li><a href="#s13" data-num="13">Force Majeure</a></li>
+      <li><a href="#s14" data-num="14">Governing Law</a></li>
+      <li><a href="#s15" data-num="15">Company Information</a></li>
+    </ol>
+  </div>
+
+  <!-- IMPORTANT NOTICE -->
+  <div class="notice">
+    <p><strong>Please read these Terms carefully before accessing or using the AeroQMS platform.</strong> By accessing or using AeroQMS, you confirm that you have read, understood and agree to be bound by these Terms. If you do not agree, you must immediately discontinue use of the platform. <strong>Please pay particular attention to the bold provisions — they limit liability, impose obligations and constitute acknowledgements on your part.</strong></p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="tos-section" id="s1">
+    <h2><span class="section-num">01</span> Introduction and Acceptance</h2>
+    <p>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you", "your") and Cheddar AI (Pty) Ltd ("AeroQMS", "we", "us", "our"), governing your access to and use of the AeroQMS platform, including the website at <strong>aeroqmsuas.co.za</strong>, the application at <strong>app.aeroqmsuas.co.za</strong>, and all related services, features and content (collectively, the "Platform").</p>
+    <p>By registering an account, accessing the Platform or using any of the Services, you agree to be bound by these Terms, our Privacy Policy and any additional terms applicable to specific features or subscription plans.</p>
+    <p>These Terms may be updated from time to time. We will notify registered users of material changes. Your continued use of the Platform following any update constitutes your acceptance of the revised Terms. It is your responsibility to review these Terms periodically.</p>
+    <div class="highlight">
+      <p><strong>If you are accessing the Platform on behalf of an organisation, you warrant that you have the authority to bind that organisation to these Terms, and all references to "you" include that organisation.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="tos-section" id="s2">
+    <h2><span class="section-num">02</span> Description of Services</h2>
+    <p>AeroQMS is a cloud-based Safety Management System (SMS) and Quality Management System (QMS) platform designed specifically for South African Unmanned Aircraft System (UAS) operators regulated by the South African Civil Aviation Authority (SACAA) under Civil Aviation Regulation 101 (CAR 101) and SA-CATS Part 101.</p>
+    <p>The Platform provides tools including but not limited to:</p>
+    <ul>
+      <li>Occurrence reporting and SACAA notification management</li>
+      <li>ICAO-aligned accident and incident investigation workflows</li>
+      <li>Hazard identification and risk assessment management</li>
+      <li>Internal audit scheduling, checklists and findings management</li>
+      <li>Corrective and Preventive Action (CAPA) management</li>
+      <li>Safety notice issuance and acknowledgement tracking</li>
+      <li>Anonymous safety reporting channels</li>
+      <li>Document version control and management</li>
+      <li>UAS fleet and pilot licence expiry monitoring</li>
+      <li>SACAA compliance readiness dashboards and reporting</li>
+    </ul>
+    <p>The Platform is provided on a subscription basis. Features available to you depend on your active subscription tier. We reserve the right to modify, add or remove features at any time with reasonable notice to subscribers.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="tos-section" id="s3">
+    <h2><span class="section-num">03</span> Eligibility and Registration</h2>
+    <p>To access the Platform you must:</p>
+    <ul>
+      <li>Be at least 18 years of age and have full legal capacity to enter into binding agreements</li>
+      <li>Be a representative of a SACAA-regulated UAS operator or aviation-related organisation</li>
+      <li>Provide accurate, complete and current registration information</li>
+      <li>Maintain the security of your account credentials</li>
+    </ul>
+    <p>You are responsible for all activity that occurs under your account. You must notify us immediately at <strong>support@aeroqmsuas.co.za</strong> if you become aware of any unauthorised use of your account.</p>
+    <div class="highlight">
+      <p><strong>You may not share your login credentials with any person not authorised under your organisation's subscription. Each user must have their own account. Sharing credentials may result in immediate suspension of your account without refund.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="tos-section" id="s4">
+    <h2><span class="section-num">04</span> Subscription and Payment</h2>
+    <p>Access to AeroQMS is provided on a paid subscription basis. Subscription tiers, pricing and included features are as published on our website at <strong>aeroqmsuas.co.za</strong> and may be updated from time to time.</p>
+    <ul>
+      <li>Subscriptions are billed monthly in South African Rands (ZAR)</li>
+      <li>Payment is due at the beginning of each billing cycle</li>
+      <li>Subscriptions automatically renew unless cancelled prior to the renewal date</li>
+      <li>No refunds are provided for partial months or unused features</li>
+      <li>We reserve the right to adjust pricing with 30 days written notice to subscribers</li>
+    </ul>
+    <p>Failure to pay may result in suspension or termination of your account. Reactivation of a suspended account may be subject to payment of all outstanding amounts.</p>
+    <div class="highlight">
+      <p><strong>All fees are exclusive of VAT and any other applicable taxes, which will be added where required by South African law. You are responsible for all taxes applicable to your subscription.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="tos-section" id="s5">
+    <h2><span class="section-num">05</span> User Responsibilities</h2>
+    <p>By using the Platform, you warrant and agree that:</p>
+    <ul>
+      <li>All information entered into the Platform is accurate, complete and lawfully obtained</li>
+      <li>You will use the Platform only for lawful purposes and in accordance with these Terms</li>
+      <li>You will not attempt to gain unauthorised access to any part of the Platform or its infrastructure</li>
+      <li>You will not upload or transmit any malicious code, viruses or harmful content</li>
+      <li>You will not use the Platform to store or transmit content that is unlawful, defamatory, discriminatory or offensive</li>
+      <li>You will not attempt to reverse engineer, decompile or extract the underlying source code of the Platform</li>
+      <li>You will not resell, sublicence or otherwise commercially exploit the Platform without our prior written consent</li>
+      <li>You will comply with all applicable South African laws and aviation regulations in your use of the Platform</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>You acknowledge that AeroQMS is a compliance management tool. The accuracy and completeness of all data entered into the Platform is entirely your responsibility. AeroQMS does not verify, audit or validate the accuracy of information you submit.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="tos-section" id="s6">
+    <h2><span class="section-num">06</span> Data Ownership and Privacy</h2>
+    <p>You retain full ownership of all data, records, documents and information you submit to the Platform ("Your Data"). AeroQMS does not claim any ownership rights over Your Data.</p>
+    <p>By submitting data to the Platform, you grant AeroQMS a limited, non-exclusive licence to store, process and display Your Data solely for the purpose of providing the Services to you.</p>
+    <p>We process personal information in accordance with the South African Protection of Personal Information Act, 2013 (POPIA). Please refer to our Privacy Policy for full details on how we collect, use, store and protect personal information.</p>
+    <ul>
+      <li>Your Data is hosted on secure cloud infrastructure in accordance with industry best practices</li>
+      <li>We will not sell, rent or share Your Data with third parties except as required by law or as described in our Privacy Policy</li>
+      <li>Upon termination of your subscription, you may request an export of Your Data within 30 days of termination</li>
+      <li>After 30 days of termination, we reserve the right to permanently delete Your Data</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>When submitting personal information of your employees, pilots or other personnel to the Platform, you are the Responsible Party under POPIA. You warrant that you have obtained all necessary consents and authorities to submit such personal information.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="tos-section" id="s7">
+    <h2><span class="section-num">07</span> Intellectual Property</h2>
+    <p>All intellectual property rights in the Platform, including but not limited to the software, user interface design, branding, logos, trademarks, workflows, checklists, templates and documentation, are owned by or licensed to Cheddar AI (Pty) Ltd and are protected under South African and international intellectual property law.</p>
+    <p>Your subscription grants you a limited, non-exclusive, non-transferable, revocable licence to access and use the Platform solely for your internal compliance management purposes during the term of your subscription.</p>
+    <div class="highlight">
+      <p><strong>You may not copy, reproduce, modify, distribute, sell or create derivative works from any part of the Platform or its content without our prior written consent. Any unauthorised use of our intellectual property may result in immediate termination of your account and legal action.</strong></p>
+    </div>
+    <p>Any feedback, suggestions or ideas you provide to us regarding the Platform may be used by us freely without any obligation to you.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="tos-section" id="s8">
+    <h2><span class="section-num">08</span> Regulatory Disclaimer</h2>
+    <p>AeroQMS is a software platform designed to assist UAS operators in managing and documenting their compliance activities. It is not a regulatory authority and does not constitute legal, aviation, safety or compliance advice.</p>
+    <div class="highlight">
+      <p><strong>The use of AeroQMS does not guarantee compliance with SACAA regulations, CAR 101, SA-CATS Part 101 or any other applicable aviation regulation. Compliance with all applicable regulations remains the sole responsibility of the operator. AeroQMS makes no warranty that use of the Platform will result in a successful SACAA audit outcome or regulatory approval.</strong></p>
+    </div>
+    <p>You are solely responsible for ensuring that your operations, procedures and documentation comply with all applicable South African civil aviation regulations. We strongly recommend that you engage qualified aviation compliance professionals to review your compliance posture independently of the Platform.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="tos-section" id="s9">
+    <h2><span class="section-num">09</span> Disclaimers and Warranties</h2>
+    <p>The Platform is provided on an "as is" and "as available" basis. To the maximum extent permitted by applicable law, AeroQMS expressly disclaims all warranties of any kind, whether express or implied, including but not limited to:</p>
+    <ul>
+      <li>Warranties of merchantability or fitness for a particular purpose</li>
+      <li>Warranties that the Platform will be uninterrupted, error-free or free of viruses or harmful components</li>
+      <li>Warranties as to the accuracy, completeness or reliability of any content on the Platform</li>
+      <li>Warranties that the Platform will meet your specific compliance or regulatory requirements</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>AeroQMS does not warrant that the Platform will be available at all times. Scheduled and unscheduled maintenance, technical failures, third-party service outages and other factors may cause interruptions. We will endeavour to provide reasonable notice of planned downtime where possible.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="tos-section" id="s10">
+    <h2><span class="section-num">10</span> Limitation of Liability</h2>
+    <div class="highlight">
+      <p><strong>To the maximum extent permitted by applicable South African law, AeroQMS, its directors, employees, contractors and affiliates shall not be liable for any direct, indirect, incidental, special, consequential, punitive or exemplary damages arising from or related to your use of or inability to use the Platform, including but not limited to:</strong></p>
+    </div>
+    <ul>
+      <li><strong>Loss of data or corruption of data</strong></li>
+      <li><strong>Loss of revenue, profits or business opportunities</strong></li>
+      <li><strong>Regulatory fines, penalties or enforcement action by SACAA or any other authority</strong></li>
+      <li><strong>Aircraft accidents, incidents or losses</strong></li>
+      <li><strong>Damage to reputation or goodwill</strong></li>
+      <li><strong>Any costs arising from reliance on information generated by the Platform</strong></li>
+    </ul>
+    <p>Where liability cannot be excluded by law, our total aggregate liability to you shall not exceed the total subscription fees paid by you in the three months immediately preceding the event giving rise to the claim.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="tos-section" id="s11">
+    <h2><span class="section-num">11</span> Indemnification</h2>
+    <div class="highlight">
+      <p><strong>You agree to indemnify, defend and hold harmless AeroQMS, Cheddar AI (Pty) Ltd, and their respective directors, employees, contractors and affiliates from and against any claims, damages, losses, costs and expenses (including reasonable legal fees) arising out of or related to:</strong></p>
+    </div>
+    <ul>
+      <li><strong>Your use of or access to the Platform</strong></li>
+      <li><strong>Your violation of these Terms</strong></li>
+      <li><strong>Your violation of any applicable law or regulation</strong></li>
+      <li><strong>Any data or content you submit to the Platform</strong></li>
+      <li><strong>Any claim by a third party arising from your use of the Platform</strong></li>
+    </ul>
+    <p>This indemnification obligation survives termination of these Terms and your use of the Platform.</p>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="tos-section" id="s12">
+    <h2><span class="section-num">12</span> Termination</h2>
+    <p>Either party may terminate these Terms at any time subject to the following:</p>
+    <ul>
+      <li>You may cancel your subscription at any time through your account settings or by contacting us at support@aeroqmsuas.co.za</li>
+      <li>Cancellation takes effect at the end of the current billing cycle — no refunds are provided for the remainder of the billing period</li>
+      <li>We may suspend or terminate your access immediately if you breach these Terms, fail to pay subscription fees or engage in conduct that we reasonably consider harmful to the Platform or other users</li>
+      <li>We will provide 30 days written notice for any termination not caused by your breach</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>Upon termination, your right to access the Platform ceases immediately. You are responsible for exporting any data you require before termination takes effect. We will retain Your Data for 30 days post-termination to allow for data export requests, after which it will be permanently deleted.</strong></p>
+    </div>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="tos-section" id="s13">
+    <h2><span class="section-num">13</span> Force Majeure</h2>
+    <p>AeroQMS shall not be liable for any delay or failure to perform its obligations under these Terms where such delay or failure is caused by circumstances beyond our reasonable control, including but not limited to:</p>
+    <ul>
+      <li>Acts of God, natural disasters or extreme weather events</li>
+      <li>Government actions, regulations or restrictions</li>
+      <li>Power outages, load shedding or infrastructure failures</li>
+      <li>Internet or telecommunications failures</li>
+      <li>Third-party service provider outages (including cloud hosting providers)</li>
+      <li>Cyberattacks, hacking or other malicious acts by third parties</li>
+      <li>Pandemics or public health emergencies</li>
+    </ul>
+    <p>We will notify affected users as soon as reasonably practicable and will use all reasonable efforts to restore normal service as quickly as possible.</p>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="tos-section" id="s14">
+    <h2><span class="section-num">14</span> Governing Law and Dispute Resolution</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the Republic of South Africa. Any dispute arising from or related to these Terms or your use of the Platform shall be subject to the exclusive jurisdiction of the South African courts.</p>
+    <p>Before instituting legal proceedings, the parties agree to attempt to resolve any dispute in good faith through direct negotiation for a period of not less than 30 days from the date of written notice of the dispute.</p>
+    <p>For any questions, complaints or notices relating to these Terms, please contact us at:</p>
+    <ul>
+      <li>Email: <strong>support@aeroqmsuas.co.za</strong></li>
+      <li>Website: <strong>aeroqmsuas.co.za</strong></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="tos-section" id="s15">
+    <h2><span class="section-num">15</span> Company Information</h2>
+    <div class="company-info">
+      <div class="company-grid">
+        <div class="company-row">
+          <span class="company-label">Platform Name</span>
+          <span class="company-value">AeroQMS</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Owned and Operated By</span>
+          <span class="company-value">Cheddar AI (Pty) Ltd</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Country of Incorporation</span>
+          <span class="company-value">Republic of South Africa</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Description of Business</span>
+          <span class="company-value">Aviation Compliance Management Software</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Platform Website</span>
+          <span class="company-value">aeroqmsuas.co.za</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Support Email</span>
+          <span class="company-value">support@aeroqmsuas.co.za</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Governing Law</span>
+          <span class="company-value">Republic of South Africa</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label">Last Updated</span>
+          <span class="company-value">20 August 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 AeroQMS — Cheddar AI (Pty) Ltd. All rights reserved.</p>
+  <div class="foot-links">
+    <a href="/">Home</a>
+    <a href="/terms.html">Terms of Service</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="mailto:support@aeroqmsuas.co.za">support@aeroqmsuas.co.za</a>
+  </div>
+</footer>
+
+</body>
+</html>
