@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — AeroQMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0C1824;
+  --navy:#1B3A5C;
+  --blue:#2563EB;
+  --blue-pale:#EFF6FF;
+  --gold:#C8960C;
+  --gold-light:#F5C518;
+  --teal:#0D9488;
+  --white:#FFFFFF;
+  --bg:#F8FAFD;
+  --card:#FFFFFF;
+  --border:#DBEAFE;
+  --border-subtle:#E8F0FE;
+  --text:#0C1824;
+  --text-body:#374151;
+  --text-muted:#6B7280;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(248,250,253,0.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-subtle);
+  padding:0 6%;display:flex;align-items:center;
+  justify-content:space-between;height:68px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(37,99,235,0.3)}
+.nav-wordmark{font-family:var(--font);font-size:19px;font-weight:800;color:var(--ink)}
+.nav-wordmark span{color:var(--gold)}
+.nav-back{font-size:14px;color:var(--text-muted);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+.nav-back:hover{color:var(--blue)}
+.hero{
+  background:linear-gradient(160deg,var(--ink) 0%,#0D1F35 45%,#0A2040 100%);
+  padding:130px 6% 70px;text-align:center;position:relative;overflow:hidden;
+}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:72px 72px}
+.hero-accent{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--blue),transparent)}
+.hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,150,12,0.12);border:1px solid rgba(200,150,12,0.28);border-radius:100px;padding:6px 16px;font-size:11px;color:#F5C518;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;font-family:var(--font)}
+.hero h1{font-family:var(--font);font-size:clamp(32px,4vw,48px);font-weight:800;color:white;letter-spacing:-1.2px;margin-bottom:16px;line-height:1.1}
+.hero p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;font-weight:300}
+.hero p strong{color:rgba(255,255,255,0.7);font-weight:500}
+.content-wrap{max-width:860px;margin:0 auto;padding:72px 6% 100px}
+.toc{background:var(--blue-pale);border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:56px}
+.toc h3{font-family:var(--font);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
+.toc ol li a{font-size:13px;color:var(--blue);text-decoration:none;font-weight:500;transition:color 0.2s;display:flex;align-items:center;gap:6px}
+.toc ol li a:hover{color:var(--navy)}
+.toc ol li a::before{content:attr(data-num);font-size:10px;font-weight:700;color:var(--text-muted);min-width:18px}
+@media(max-width:600px){.toc ol{grid-template-columns:1fr}}
+.notice{background:#F0FDFA;border:1px solid rgba(13,148,136,0.2);border-left:4px solid var(--teal);border-radius:10px;padding:20px 24px;margin-bottom:48px}
+.notice p{font-size:14px;color:var(--text-body);line-height:1.7}
+.notice strong{color:var(--ink);font-weight:700}
+.tos-section{margin-bottom:52px;padding-bottom:52px;border-bottom:1px solid var(--border-subtle)}
+.tos-section:last-child{border-bottom:none}
+.tos-section h2{font-family:var(--font);font-size:22px;font-weight:800;color:var(--ink);margin-bottom:18px;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px}
+.section-num{font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-pale);border:1px solid var(--border);padding:3px 10px;border-radius:100px;font-family:var(--font)}
+.tos-section p{font-size:15px;color:var(--text-body);line-height:1.75;margin-bottom:14px}
+.tos-section p:last-child{margin-bottom:0}
+.tos-section ul,.tos-section ol{margin:14px 0 14px 20px;display:flex;flex-direction:column;gap:8px}
+.tos-section li{font-size:15px;color:var(--text-body);line-height:1.7}
+.highlight{background:#F0FDFA;border-left:3px solid var(--teal);padding:16px 20px;border-radius:0 8px 8px 0;margin:18px 0}
+.highlight p{font-size:14px;color:var(--text-body);margin-bottom:0}
+.highlight strong{color:var(--ink)}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.data-table th{background:var(--blue-pale);font-family:var(--font);font-size:12px;font-weight:700;color:var(--navy);padding:12px 16px;text-align:left;text-transform:uppercase;letter-spacing:0.5px}
+.data-table td{font-size:13px;color:var(--text-body);padding:12px 16px;border-top:1px solid var(--border-subtle);line-height:1.5}
+.data-table tr:hover td{background:var(--blue-pale)}
+.contact-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px;margin-top:20px}
+.contact-box h4{font-family:var(--font);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:16px}
+.contact-row{display:flex;flex-direction:column;gap:3px;padding:10px 0;border-bottom:1px solid var(--border-subtle)}
+.contact-row:last-child{border-bottom:none}
+.contact-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.contact-value{font-size:14px;color:var(--text);font-weight:500}
+footer{background:var(--ink);padding:40px 6%;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,0.3);margin-bottom:12px}
+.foot-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.foot-links a{font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+.foot-links a:hover{color:rgba(255,255,255,0.7)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="nav-wordmark">Aero<span>QMS</span></span>
+  </a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: <strong>20 August 2026</strong> &nbsp;·&nbsp; Effective date: <strong>20 August 2026</strong><br>This policy explains how AeroQMS collects, uses and protects your personal information.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1" data-num="1">Who We Are</a></li>
+      <li><a href="#s2" data-num="2">Information We Collect</a></li>
+      <li><a href="#s3" data-num="3">How We Use Your Information</a></li>
+      <li><a href="#s4" data-num="4">Legal Basis for Processing</a></li>
+      <li><a href="#s5" data-num="5">Data Sharing and Disclosure</a></li>
+      <li><a href="#s6" data-num="6">Data Storage and Security</a></li>
+      <li><a href="#s7" data-num="7">Data Retention</a></li>
+      <li><a href="#s8" data-num="8">Your Rights Under POPIA</a></li>
+      <li><a href="#s9" data-num="9">Cookies and Tracking</a></li>
+      <li><a href="#s10" data-num="10">Third-Party Services</a></li>
+      <li><a href="#s11" data-num="11">Children's Privacy</a></li>
+      <li><a href="#s12" data-num="12">Changes to This Policy</a></li>
+      <li><a href="#s13" data-num="13">Contact and Complaints</a></li>
+    </ol>
+  </div>
+
+  <div class="notice">
+    <p><strong>AeroQMS is committed to protecting your privacy.</strong> This Privacy Policy explains how Cheddar AI (Pty) Ltd collects, uses, stores and protects personal information in accordance with the South African <strong>Protection of Personal Information Act, 2013 (POPIA)</strong>. By using the AeroQMS platform, you acknowledge that you have read and understood this policy.</p>
+  </div>
+
+  <div class="tos-section" id="s1">
+    <h2><span class="section-num">01</span> Who We Are</h2>
+    <p>AeroQMS is owned and operated by <strong>Cheddar AI (Pty) Ltd</strong>, a company incorporated in the Republic of South Africa. We are the Responsible Party as defined under POPIA in respect of personal information collected through the AeroQMS platform at <strong>aeroqmsuas.co.za</strong> and <strong>app.aeroqmsuas.co.za</strong>.</p>
+    <p>For all privacy-related queries, requests or complaints, please contact us at <strong>support@aeroqmsuas.co.za</strong>.</p>
+  </div>
+
+  <div class="tos-section" id="s2">
+    <h2><span class="section-num">02</span> Information We Collect</h2>
+    <p>We collect personal information in the following categories:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Account Information</strong></td>
+          <td>Full name, email address, role, job title, organisation name</td>
+          <td>Provided by you on registration</td>
+        </tr>
+        <tr>
+          <td><strong>Personnel Records</strong></td>
+          <td>Pilot names, RPC licence numbers, medical certificate expiry dates</td>
+          <td>Entered by organisation administrators</td>
+        </tr>
+        <tr>
+          <td><strong>Operational Data</strong></td>
+          <td>Occurrence reports, hazard reports, audit records, corrective actions, investigation records</td>
+          <td>Entered by users during platform use</td>
+        </tr>
+        <tr>
+          <td><strong>Fleet Information</strong></td>
+          <td>Aircraft registration numbers, serial numbers, LoA details</td>
+          <td>Entered by organisation administrators</td>
+        </tr>
+        <tr>
+          <td><strong>Technical Data</strong></td>
+          <td>IP address, browser type, device type, session data, access logs</td>
+          <td>Automatically collected during platform use</td>
+        </tr>
+        <tr>
+          <td><strong>Communications</strong></td>
+          <td>Support emails, feedback and enquiries sent to us</td>
+          <td>Provided by you directly</td>
+        </tr>
+        <tr>
+          <td><strong>Anonymous Reports</strong></td>
+          <td>Safety report content only — no identity information is collected or stored</td>
+          <td>Submitted via anonymous reporting channel</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <p><strong>Anonymous Reporting:</strong> When a report is submitted through the anonymous reporting channel, no identity information is collected, stored or linked to the report under any circumstances. This is by design and cannot be overridden by any administrator.</p>
+    </div>
+  </div>
+
+  <div class="tos-section" id="s3">
+    <h2><span class="section-num">03</span> How We Use Your Information</h2>
+    <p>We use personal information for the following purposes:</p>
+    <ul>
+      <li>To provide, operate and maintain the AeroQMS platform and its features</li>
+      <li>To authenticate users and manage access to the platform</li>
+      <li>To send transactional notifications — audit scheduling, CAR assignments, safety notice reminders, expiry warnings</li>
+      <li>To generate compliance reports, dashboards and PDF exports for your organisation</li>
+      <li>To respond to support requests and customer service enquiries</li>
+      <li>To monitor platform performance, security and integrity</li>
+      <li>To comply with applicable legal obligations</li>
+      <li>To send important product updates and service announcements</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>We do not use your personal information for marketing purposes without your explicit consent. We do not sell, rent or trade your personal information to any third party for commercial purposes.</strong></p>
+    </div>
+  </div>
+
+  <div class="tos-section" id="s4">
+    <h2><span class="section-num">04</span> Legal Basis for Processing</h2>
+    <p>Under POPIA, we process personal information on the following lawful grounds:</p>
+    <ul>
+      <li><strong>Contractual necessity</strong> — processing required to deliver the services you have subscribed to</li>
+      <li><strong>Legitimate interests</strong> — platform security, fraud prevention and service improvement</li>
+      <li><strong>Legal obligation</strong> — where we are required to process information to comply with applicable South African law</li>
+      <li><strong>Consent</strong> — where you have expressly consented to specific processing, such as receiving marketing communications</li>
+    </ul>
+  </div>
+
+  <div class="tos-section" id="s5">
+    <h2><span class="section-num">05</span> Data Sharing and Disclosure</h2>
+    <p>We do not share your personal information with third parties except in the following limited circumstances:</p>
+    <ul>
+      <li><strong>Service providers</strong> — trusted third-party providers who assist us in operating the platform, including cloud hosting, database services and transactional email delivery. These providers are contractually bound to process data only on our instruction and in accordance with POPIA</li>
+      <li><strong>Legal requirements</strong> — where we are required by law, court order or regulatory authority to disclose personal information</li>
+      <li><strong>Business transfers</strong> — in the event of a merger, acquisition or sale of assets, personal information may be transferred to the successor entity subject to equivalent privacy protections</li>
+      <li><strong>With your consent</strong> — where you have expressly authorised a specific disclosure</li>
+    </ul>
+    <p>Our key third-party service providers currently include:</p>
+    <ul>
+      <li><strong>Supabase</strong> — database and authentication infrastructure (hosted in EU)</li>
+      <li><strong>Vercel</strong> — platform hosting and deployment</li>
+      <li><strong>Resend</strong> — transactional email delivery</li>
+    </ul>
+  </div>
+
+  <div class="tos-section" id="s6">
+    <h2><span class="section-num">06</span> Data Storage and Security</h2>
+    <p>Your data is stored on secure cloud infrastructure provided by Supabase, with servers located in the European Union (Ireland). We implement industry-standard security measures including:</p>
+    <ul>
+      <li>Encryption of data in transit using TLS/SSL</li>
+      <li>Encryption of data at rest</li>
+      <li>Role-based access controls — users only access data relevant to their role</li>
+      <li>Regular security monitoring and access logging</li>
+      <li>Secure authentication with password hashing</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>While we implement robust security measures, no system is completely immune to security risks. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account.</strong></p>
+    </div>
+  </div>
+
+  <div class="tos-section" id="s7">
+    <h2><span class="section-num">07</span> Data Retention</h2>
+    <p>We retain personal information for as long as necessary to fulfil the purposes for which it was collected, including:</p>
+    <ul>
+      <li><strong>Active subscriptions</strong> — all data retained for the full duration of your subscription</li>
+      <li><strong>Post-termination</strong> — data retained for 30 days following subscription termination to allow for data export requests</li>
+      <li><strong>Legal obligations</strong> — certain records may be retained longer where required by applicable South African law</li>
+      <li><strong>Support records</strong> — communications retained for up to 2 years</li>
+    </ul>
+    <p>After the applicable retention period, personal information is securely and permanently deleted from our systems.</p>
+  </div>
+
+  <div class="tos-section" id="s8">
+    <h2><span class="section-num">08</span> Your Rights Under POPIA</h2>
+    <p>As a data subject under the Protection of Personal Information Act, 2013, you have the following rights:</p>
+    <ul>
+      <li><strong>Right of access</strong> — request a copy of the personal information we hold about you</li>
+      <li><strong>Right to correction</strong> — request correction of inaccurate or incomplete personal information</li>
+      <li><strong>Right to deletion</strong> — request deletion of your personal information, subject to legal retention obligations</li>
+      <li><strong>Right to object</strong> — object to the processing of your personal information in certain circumstances</li>
+      <li><strong>Right to data portability</strong> — request your data in a structured, machine-readable format</li>
+      <li><strong>Right to withdraw consent</strong> — withdraw consent where processing is based on consent, without affecting the lawfulness of prior processing</li>
+    </ul>
+    <p>To exercise any of these rights, please submit a written request to <strong>support@aeroqmsuas.co.za</strong>. We will respond within 30 days of receiving your request.</p>
+    <p>If you are dissatisfied with our handling of your personal information, you have the right to lodge a complaint with the <strong>Information Regulator of South Africa</strong> at <strong>inforeg.org.za</strong>.</p>
+  </div>
+
+  <div class="tos-section" id="s9">
+    <h2><span class="section-num">09</span> Cookies and Tracking</h2>
+    <p>The AeroQMS platform uses the following types of cookies and local storage:</p>
+    <ul>
+      <li><strong>Essential cookies</strong> — required for authentication and session management. The platform cannot function without these.</li>
+      <li><strong>Performance cookies</strong> — used to monitor platform performance and identify errors. No personally identifiable information is included.</li>
+    </ul>
+    <p>We do not use advertising cookies, tracking pixels or any third-party marketing trackers on the AeroQMS platform. The landing page at aeroqmsuas.co.za uses only essential session cookies.</p>
+  </div>
+
+  <div class="tos-section" id="s10">
+    <h2><span class="section-num">10</span> Third-Party Services and Links</h2>
+    <p>The AeroQMS platform may contain links to third-party websites or reference external services. We are not responsible for the privacy practices of any third-party website or service. We encourage you to review the privacy policies of any third-party services you access.</p>
+    <p>Third-party service providers who process data on our behalf are bound by data processing agreements that require them to process personal information only on our instruction and in compliance with applicable data protection law.</p>
+  </div>
+
+  <div class="tos-section" id="s11">
+    <h2><span class="section-num">11</span> Children's Privacy</h2>
+    <p>The AeroQMS platform is intended for use by adults in a professional aviation context. We do not knowingly collect personal information from persons under the age of 18. If you believe that a minor's personal information has been submitted to the platform without appropriate authorisation, please contact us immediately at <strong>support@aeroqmsuas.co.za</strong> and we will take prompt action to remove such information.</p>
+  </div>
+
+  <div class="tos-section" id="s12">
+    <h2><span class="section-num">12</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology or legal requirements. When we make material changes, we will notify registered users by email and update the "Last Updated" date at the top of this page.</p>
+    <p>Your continued use of the platform following notification of changes constitutes your acceptance of the updated Privacy Policy. We encourage you to review this policy periodically.</p>
+  </div>
+
+  <div class="tos-section" id="s13">
+    <h2><span class="section-num">13</span> Contact and Complaints</h2>
+    <p>For any questions, requests or complaints relating to this Privacy Policy or our handling of your personal information, please contact our Information Officer:</p>
+    <div class="contact-box">
+      <h4>AeroQMS Privacy Contact</h4>
+      <div class="contact-row">
+        <span class="contact-label">Platform</span>
+        <span class="contact-value">AeroQMS</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Operated By</span>
+        <span class="contact-value">Cheddar AI (Pty) Ltd</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">support@aeroqmsuas.co.za</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Website</span>
+        <span class="contact-value">aeroqmsuas.co.za</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Country</span>
+        <span class="contact-value">Republic of South Africa</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Information Regulator</span>
+        <span class="contact-value">inforeg.org.za</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 AeroQMS — Cheddar AI (Pty) Ltd. All rights reserved.</p>
+  <div class="foot-links">
+    <a href="/">Home</a>
+    <a href="/terms.html">Terms of Service</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="mailto:support@aeroqmsuas.co.za">support@aeroqmsuas.co.za</a>
+  </div>
+</footer>
+
+</body>
+</html>
